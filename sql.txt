@@ -1,0 +1,30 @@
+CREATE TABLE topics(
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ name varchar(60) NOT NULL,
+ owner_id int NOT NULL,
+ creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+ deleted tinyint default 0
+);
+
+CREATE TABLE posts(
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ name varchar(60) NOT NULL,
+ content text NOT NULL,
+ topic_id int NOT NULL,
+ owner_id int NOT NULL,
+ creation_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+ deleted tinyint default 0
+);
+
+CREATE TABLE users(
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ username varchar(60) NOT NULL,
+ password varchar(255) NOT NULL,
+ permission int default 0
+);
+
+INSERT INTO users(id, username, password, permission)
+VALUES(100, 'admin', 'admin', 2);
+INSERT INTO users(id, username, password, permission)
+VALUES(101, 'demo', 'demo', 1);
+
