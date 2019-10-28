@@ -55,9 +55,17 @@ class Posts extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getOwnerName() {
+    public function getOwnerName()
+    {
         $id = $this->owner_id;
         $owner = User::findIdentity($id);
         return $owner->username;
+    }
+
+    public function getViews()
+    {
+        $id = $this->id;
+        $count = PostViews::find()->where(['post_id' => $id])->count();
+        return $count;
     }
 }

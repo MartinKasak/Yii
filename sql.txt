@@ -28,3 +28,8 @@ VALUES(100, 'admin', 'admin', 2);
 INSERT INTO users(id, username, password, permission)
 VALUES(101, 'demo', 'demo', 1);
 
+CREATE TABLE post_views(
+ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ user_id int NOT NULL,
+ view_time DATETIME DEFAULT CURRENT_TIMESTAMP
+);
