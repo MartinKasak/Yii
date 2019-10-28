@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Posts;
 use app\models\PostsSearch;
+use app\models\PostViews;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -85,6 +86,10 @@ class PostsController extends Controller
      */
     public function actionView($id)
     {
+        $postView = new PostViews();
+        $postView->post_id = $id;
+        $postView->user_id = Yii::$app->user->identity->id;
+        $postView->save();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
